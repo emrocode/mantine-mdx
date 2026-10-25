@@ -1,0 +1,61 @@
+{
+  "author": "Emilio Romero <npm@emroco.de>",
+  "bugs": {
+    "url": "https://github.com/emrocode/mantine-mdx/issues"
+  },
+  "description": "Mantine components into MDX",
+  "devDependencies": {
+    "@biomejs/biome": "2.6.3",
+    "@mdx-js/react": "^3.1.1",
+    "@types/mdx": "^2.0.14",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "postcss": "^8.5.31",
+    "postcss-preset-mantine": "^1.18.0",
+    "postcss-simple-vars": "^7.0.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tsup": "^9.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/emrocode/mantine-mdx#readme",
+  "keywords": [
+    "mantine",
+    "mdx"
+  ],
+  "license": "MIT",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "name": "@emrocode/mantine-mdx",
+  "peerDependencies": {
+    "@mantine/code-highlight": ">=7 <10",
+    "@mantine/core": ">=7 <10",
+    "@mdx-js/react": ">=2 <4",
+    "react": ">=16.14 <20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emrocode/mantine-mdx.git"
+  },
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm,cjs --dts",
+    "check": "biome check --write .",
+    "format": "biome format --write .",
+    "prepublishOnly": "npm run build",
+    "test": "vitest run"
+  },
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "version": "1.0.0"
+}
