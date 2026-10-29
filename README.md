@@ -60,6 +60,48 @@ export function CustomMdxComponents() {
 }
 ```
 
+### GitHub alerts
+
+GitHub alert blockquotes are supported through the `remarkGithubAlerts`
+plugin. Add it to your MDX compiler:
+
+```ts
+import mdx from '@mdx-js/rollup';
+import { remarkGithubAlerts } from '@emrocode/mantine-mdx';
+
+export default {
+  plugins: [mdx({ remarkPlugins: [remarkGithubAlerts] })],
+};
+```
+
+Alerts are rendered with the Mantine `Blockquote` component:
+
+```md
+> [!NOTE]
+> Useful information.
+```
+
+To customize an alert, override `blockquote` and reuse `MdxBlockquote`:
+
+```tsx
+import {
+  createMantineMdxComponents,
+  MdxBlockquote,
+} from '@emrocode/mantine-mdx';
+import { Blockquote } from '@mantine/core';
+
+const components = createMantineMdxComponents({
+  blockquote: ({ 'data-alert-type': type, ...props }) =>
+    type === 'warning' ? (
+      <Blockquote color="orange" {...props} />
+    ) : (
+      <MdxBlockquote data-alert-type={type} {...props} />
+    ),
+});
+```
+
+The default alert colors and titles are exported as `mantineMdxAlerts`.
+
 ### Development
 
 ```bash
