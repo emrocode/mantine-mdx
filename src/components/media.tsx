@@ -25,7 +25,7 @@ function MdxCheckboxIcon({
         d={indeterminate ? 'M2 5h6' : 'M2 5.25 4.25 7.5 8 2.5'}
         fill="none"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
