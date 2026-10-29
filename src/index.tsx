@@ -4,7 +4,28 @@ import { MdxCode, MdxPre } from './components/code';
 import { MdxLi, MdxOl, MdxUl } from './components/lists';
 import { MdxImg, MdxInput } from './components/media';
 import { MdxTable, MdxTableParts } from './components/tables';
-import { MdxHeading, MdxTypography, MdxWrapper } from './components/typography';
+import {
+  MdxBlockquote,
+  MdxHeading,
+  MdxTypography,
+  MdxWrapper,
+  mantineMdxAlerts,
+} from './components/typography';
+import {
+  GITHUB_ALERT_TYPES,
+  type GithubAlertType,
+  isGithubAlertType,
+  remarkGithubAlerts,
+} from './plugins/github-alerts';
+
+export {
+  GITHUB_ALERT_TYPES,
+  type GithubAlertType,
+  isGithubAlertType,
+  MdxBlockquote,
+  mantineMdxAlerts,
+  remarkGithubAlerts,
+};
 
 const headings = {
   h1: (props: Record<string, unknown>) => <MdxHeading order={1} {...props} />,

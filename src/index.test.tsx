@@ -3,6 +3,7 @@ import { MDXProvider } from '@mdx-js/react';
 import type { ComponentType } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
+import { MdxPre } from './components/code';
 import {
   createMantineMdxComponents,
   mantineMdxComponents,
@@ -66,6 +67,20 @@ describe('mantineMdxComponents', () => {
     for (const [name, content] of cases) {
       expect(render(name, { children: content })).toContain(content);
     }
+  });
+
+  it('renders GitHub alerts with the Mantine Blockquote component', () => {
+    const html = render('blockquote', {
+      children: 'Alert body',
+      'data-alert-type': 'note',
+    });
+
+    expect(html).toContain('mantine-Blockquote-root');
+    expect(html).toContain('Note');
+    expect(html).toContain('Alert body');
+    expect(html).toContain('--bq-bd:var(--mantine-color-blue-filled)');
+    expect(html).toContain('light-dark(color-mix(');
+    expect(html).toContain('--mantine-color-blue-text');
   });
 
   it('supports custom component mappings', () => {
@@ -148,5 +163,25 @@ describe('mantineMdxComponents', () => {
         ),
       }),
     ).toContain('Header');
+  });
+
+  it('adds code block spacing when another block follows', () => {
+    const Wrapper = mantineMdxComponents.wrapper as ComponentType<
+      Record<string, unknown>
+    >;
+    const html = renderToStaticMarkup(
+      <MantineProvider>
+        <Wrapper>
+          <MdxPre>
+            <code className="language-ts">{'const answer = 42;'}</code>
+          </MdxPre>
+          <p>Next paragraph</p>
+        </Wrapper>
+      </MantineProvider>,
+    );
+
+    expect(html).toContain('data-mantine-mdx-wrapper');
+    expect(html).toContain('data-mdx-code-block');
+    expect(html).toContain('[data-mdx-code-block]:has(+ *)');
   });
 });
