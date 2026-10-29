@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@emrocode/mantine-mdx": "^1.0.0",
+    "@emrocode/mantine-mdx": "^1.1.0",
     "@mantine/code-highlight": "^9.7.3",
     "@mantine/core": "^9.7.3",
     "react": "^19.3.1",
