@@ -34,6 +34,7 @@ export function MdxPre(props: Record<string, unknown>) {
       return (
         <CodeHighlight
           code={code.replace(/\n$/, '')}
+          data-mdx-code-block=""
           language={getCodeLanguage(codeProps.className)}
           {...rest}
         />
